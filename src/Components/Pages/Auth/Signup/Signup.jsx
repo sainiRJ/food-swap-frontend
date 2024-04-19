@@ -1,17 +1,17 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
-import Error from "../Error";
-import google from "../../assets/images/google.jpeg";
-import foodImg from "../../assets/images/Firefly food swap ceremony 62578.jpg"
+import Error from "../../../Error/Error";
+import google from "../../../../assets/images/google.jpeg";
+import foodImg from "../../../../assets/images/Firefly food swap ceremony 62578.jpg"
 import { NavLink, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, db, provider } from "../../Firebase";
-import { signUpSchema } from "../SignUpSchema";
+import { auth, db, provider } from "../../../../Firebase";
+import { signUpSchema } from "../../../SignUpSchema";
 import { Button, CircularProgress } from "@mui/material";
 import { collection, addDoc } from "firebase/firestore";
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
-import './Signup.css';
+import './Signup.css'
 
 function Signup() {
   const [loading, setLoading] = useState(false);
@@ -51,9 +51,9 @@ function Signup() {
       setLoading(true);
       const result = await signInWithPopup(auth, provider);
       console.log("google auth", result);
-      const user = result.user;
+      const user = result._tokenResponse;
       console.log("user details", user);
-      localStorage.setItem("token", user.accessToken);
+      localStorage.setItem("token", user.oauthAccessToken);
       localStorage.setItem("user", JSON.stringify(user));
       // navigate("/dashboard");
       const response = await axios.post("http://localhost:5000/signup", {
@@ -69,7 +69,7 @@ function Signup() {
   return (
     <div className="w-screen h-screen bg-gradient-to-r backcolor flex justify-center items-center">
       <div className="seprator">
-        <div className="w-3/4 h-auto bg-white flex-row gap-4 p-4  min-w-80 rounded-2xl leftDiv">
+        <div className="w-3/4 bg-white flex-row gap-4 p-4  min-w-80 rounded-2xl leftDiv">
           <div className="content w-auto">
             <div className="action-buttons">
               <button
@@ -105,7 +105,7 @@ function Signup() {
                   value={values.password}
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 h-12"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 h-12"
                   placeholder="Password"
                 />
               </div>
@@ -133,7 +133,7 @@ function Signup() {
           </div>
         </div>
         <div className="rightDiv">
-          <img src={foodImg} alt="" />
+          <img src={foodImg} alt="" className="rounded-2xl"/>
         </div>
       </div>
     </div>

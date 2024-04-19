@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+
+/* Define your styles here */
+
+.Loginseprator {
+  margin: auto;
+  display: flex;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.left {
+  flex: 50%;
+  width: 100vw;
+  height: 100vh;
+}
+
+.right {
+  margin-top: 0px;
+  flex: 50%;
+  width: 70vw;
+  height: 100vh;
+}
+
+.login-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px; /* Adjust the width as needed */
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
