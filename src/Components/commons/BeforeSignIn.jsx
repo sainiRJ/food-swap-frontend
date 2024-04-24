@@ -4,6 +4,8 @@ import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { makeStyles } from "@mui/styles";
+import './BeforeSignIn.css'
+
 // google signup imports
 import { useFormik } from "formik";
 import Error from "../Error/Error";
@@ -74,9 +76,9 @@ export default function TemporaryDrawer2({ open, onClose }) {
   };
 
   const DrawerContent = (
-    <div className="w-96 h-screen bg-gradient-to-r backcolor flex justify-center items-center">
+    <div className="h-screen bg-gradient-to-r backcolor flex justify-center items-center outrWidth">
       <div className="close-button text-white w-12 h-12 flex items-center justify-center  absolute cursor-pointer top-4 left-80"><img src={cancle} alt="cancle btn" onClick={onClose}/></div>
-        <div className="w-80 bg-white flex-row gap-4 p-4  w-80 rounded-2xl">
+        <div className="w-96 bg-white flex-row gap-4 p-4  w-80 rounded-2xl">
           <div className="content w-auto">
             <div className="action-buttons">
               <button
@@ -136,7 +138,6 @@ export default function TemporaryDrawer2({ open, onClose }) {
                 <p className="text-blue-500 font-medium">Sign in</p>
               </NavLink>
             </div>
-            e
           </div>
         </div>
     </div>
