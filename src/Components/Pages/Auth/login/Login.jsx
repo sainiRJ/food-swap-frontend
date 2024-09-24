@@ -54,13 +54,15 @@ function Login() {
       console.log("google auth", result);
       const user = result.user;
       console.log("user details", user);
-      localStorage.setItem("token", user.accessToken);
-      localStorage.setItem("user", JSON.stringify(user));
+     
       // navigate("/dashboard");
-      const response = await axios.post("http://localhost:5000/signup", {
+      const response = await axios.post("http://localhost:5000/login", {
         user: user,
       });
+      localStorage.setItem("token", user.accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
       console.log("Form submitted successfully:", response.data);
+      navigate("/");
     } catch (error) {
       console.error("Error signing in with Google:", error);
     }
